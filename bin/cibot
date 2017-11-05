@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Author: kahsolt
+# Date: 2017-11-05
+#
+
+CIBOT_HOME=$(dirname $(cd `dirname $0`; pwd))
+QASNAKE_HOME="${CIBOT_HOME}/lib/QA-Snake"
+
+SH=`which bash`
+PY2=`which python`
+PY3=`which python3`
+
+case "$1" in
+    start)
+        cd $QASNAKE_HOME
+        screen -dmS QA-Snake $PY2 QA/server.py
+        cd $CIBOT_HOME
+        screen -dmS Django-CIBot $PY3 manage.py runserver
+        sleep 1
+        screen -list
+        ;;
+    stop)
+        screen -S Django-CIBot -X kill
+        screen -S QA-Snake -X kill
+        sleep 1
+        screen -list
+        ;;
+    status)
+        screen -list
+        ;;
+    restart)
+        $0 stop
+        $0 start
+        ;;
+    debug)
+        screen -r Django-CIBot
+        ;;
+    *)
+        # echo "Command script for cibot."
+        echo "Usage: `basename $0` {start|stop|restart|status|debug}"
+        ;;
+esac

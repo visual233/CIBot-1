@@ -1,0 +1,20 @@
+# Base Tools
+[apt]
+  python3-pip
+  sqlite3
+  screen
+  p7zip-full
+
+# CIBot
+[pip3]
+  django
+  requests
+  apscheduler
+  socket
+
+# QA-Snake
+[pip2]
+  jieba
+  aiml
+  lxml
+  beautifulsoup4
