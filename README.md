@@ -19,10 +19,16 @@
       - [图灵机器人](http://www.tuling123.com/)
 
 - **Run**
+  - sh ./bin/db migrate(首次运行)
   - sh ./bin/cibot start
+
+- **Dev**
+  - 环境依赖参考DEPENDENCIES
+  - 工程文件概貌参考STRUCTURE
+  - 开发文档参考doc目录
+  - 上传务必注意.gitignore
 
 - **Port Info**
   - 8000    Django
   - 50000   QA-Snake
 
--

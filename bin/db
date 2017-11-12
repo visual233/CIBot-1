@@ -43,22 +43,22 @@ function hardreset() {
 
   echo "[Step: 5/${STEPS}] Django: createsuperuser"
   echo "for Django-Admin app use, url='http://<ip>[:port]/admin'"
-  echo "Out of convention we set username='cibot', please set your password"
+  echo "Out of convention we set username='cibot', please input your password"
   $PY3 $CIBOT/manage.py createsuperuser --username cibot --email cibot@lab.kahsolt.tk
   echo
 }
 
 case "$1" in
-  migrate|update)
+  migrate|m)
     migrate
     ;;
-  hardreset|reset)
-    echo -n "WARN: changes CANNOT undo [yN]: "
+  hardreset|hr)
+    echo -n "WARN: changes could HARDLY undo [yN]: "
     read confirm
     if [[ "$confirm" = "Y" || "$confirm" = "y" ]]; then
       hardreset
     else
-      echo "Give up."
+      echo "Give up :)"
     fi
     ;;
   *)
